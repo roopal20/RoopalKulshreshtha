@@ -1,0 +1,60 @@
+---
+import { site } from "../content/site";
+
+const base = import.meta.env.BASE_URL;
+
+function href(path: string) {
+  if (path.startsWith("#") || path.startsWith("http")) return path;
+  return `${base}${path.replace(/^\//, "")}`;
+}
+---
+
+<section class="section-max section-pad relative overflow-hidden pb-16 pt-14 sm:pb-24 sm:pt-20">
+  <div
+    class="pointer-events-none absolute inset-y-8 right-[-10%] hidden w-[48%] rounded-[2rem] bg-gradient-to-br from-teal/15 via-paper-deep to-coral/10 blur-0 lg:block"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-y-8 right-[-8%] hidden w-[46%] overflow-hidden rounded-[2rem] border border-line/60 lg:block"
+    aria-hidden="true"
+  >
+    <div class="absolute inset-0 opacity-[0.35]" style="background-image: linear-gradient(rgba(11,95,92,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(11,95,92,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+  </div>
+
+  <p class="reveal text-sm font-semibold uppercase tracking-[0.18em] text-teal">
+    {site.hero.eyebrow}
+  </p>
+
+  <h1 class="reveal reveal-delay-1 font-display mt-5 max-w-3xl text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+    {site.name}
+  </h1>
+
+  <p class="reveal reveal-delay-2 mt-3 text-lg font-medium text-teal sm:text-xl">
+    {site.role}
+    {
+      site.availability && (
+        <span class="text-ink-muted"> · {site.availability}</span>
+      )
+    }
+  </p>
+
+  <p class="reveal reveal-delay-2 mt-6 max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
+    {site.tagline}
+  </p>
+
+  <div class="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-3">
+    <a
+      href={href(site.hero.ctaPrimaryHref)}
+      class="inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition hover:bg-teal-deep"
+    >
+      {site.hero.ctaPrimary}
+    </a>
+    <a
+      href={href(site.hero.ctaSecondaryHref)}
+      class="inline-flex items-center rounded-full border border-line bg-white/60 px-5 py-2.5 text-sm font-semibold text-ink transition hover:border-teal hover:text-teal"
+    >
+      {site.hero.ctaSecondary}
+    </a>
+  </div>
+</section>

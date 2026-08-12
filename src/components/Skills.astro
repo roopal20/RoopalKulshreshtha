@@ -1,0 +1,31 @@
+---
+import { site } from "../content/site";
+---
+
+<section id="skills" class="section-max section-pad scroll-mt-24 py-16 sm:py-20">
+  <div class="max-w-3xl">
+    <h2 class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      {site.skills.title}
+    </h2>
+    <p class="mt-3 text-ink-muted">{site.skills.intro}</p>
+  </div>
+
+  <div class="mt-10 grid gap-8 sm:grid-cols-2">
+    {
+      site.skills.groups.map((group) => (
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-teal">
+            {group.label}
+          </h3>
+          <ul class="mt-3 flex flex-wrap gap-x-3 gap-y-2 text-base text-ink">
+            {group.items.map((item) => (
+              <li class="after:ml-3 after:text-line after:content-['·'] last:after:content-none">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>

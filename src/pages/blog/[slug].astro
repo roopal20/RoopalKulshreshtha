@@ -1,0 +1,59 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const base = import.meta.env.BASE_URL;
+const formatted = post.data.pubDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <Header />
+  <main class="section-max section-pad py-14 sm:py-20">
+    <a
+      href={`${base}blog`}
+      class="text-sm font-semibold text-teal transition hover:text-teal-deep"
+    >
+      ← All posts
+    </a>
+
+    <header class="mt-8 max-w-3xl">
+      <p class="text-sm font-medium text-ink-muted">{formatted}</p>
+      <h1 class="font-display mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        {post.data.title}
+      </h1>
+      <p class="mt-4 text-lg text-ink-muted">{post.data.description}</p>
+      {
+        post.data.tags.length > 0 && (
+          <ul class="mt-5 flex flex-wrap gap-2">
+            {post.data.tags.map((tag) => (
+              <li class="text-xs font-semibold uppercase tracking-wide text-teal">{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <article
+      class="prose-custom mt-12 max-w-3xl space-y-5 text-base leading-relaxed text-ink-muted sm:text-lg [&_a]:font-semibold [&_a]:text-teal [&_a]:underline-offset-2 hover:[&_a]:underline [&_code]:rounded [&_code]:bg-paper-deep [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-sm [&_code]:text-ink [&_h2]:font-display [&_h2]:pt-4 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink [&_li]:ml-5 [&_li]:list-disc [&_ol]:ml-5 [&_ol]:list-decimal [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-ink [&_pre]:p-4 [&_pre]:text-sm [&_pre]:text-paper [&_strong]:text-ink [&_ul]:space-y-2"
+    >
+      <Content />
+    </article>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,38 @@
+---
+import { site } from "../content/site";
+---
+
+<section id="projects" class="section-max section-pad scroll-mt-24 py-16 sm:py-20">
+  <div class="max-w-3xl">
+    <h2 class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      {site.projects.title}
+    </h2>
+    <p class="mt-3 text-ink-muted">{site.projects.intro}</p>
+  </div>
+
+  <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      site.projects.items.map((project) => (
+        <li class="group flex flex-col border-t border-line pt-5">
+          <h3 class="font-display text-xl font-semibold text-ink transition group-hover:text-teal">
+            {project.link ? (
+              <a href={project.link} target="_blank" rel="noreferrer">
+                {project.title}
+              </a>
+            ) : (
+              project.title
+            )}
+          </h3>
+          <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-muted sm:text-base">
+            {project.description}
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <li class="text-xs font-semibold uppercase tracking-wide text-teal">{tag}</li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</section>
