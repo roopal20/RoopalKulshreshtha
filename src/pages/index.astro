@@ -3,9 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
+import Credibility from "../components/Credibility.astro";
+import Capabilities from "../components/Capabilities.astro";
 import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
+import Agentic from "../components/Agentic.astro";
+import Conversational from "../components/Conversational.astro";
+import Automation from "../components/Automation.astro";
 import Skills from "../components/Skills.astro";
 import Contact from "../components/Contact.astro";
 import BlogCard from "../components/BlogCard.astro";
@@ -23,10 +28,15 @@ const base = import.meta.env.BASE_URL;
   <Header />
   <main>
     <Hero />
+    <Credibility />
+    <Capabilities />
+    <Projects />
+    <Agentic />
+    <Conversational />
+    <Automation />
+    <Skills />
     <About />
     <Experience />
-    <Projects />
-    <Skills />
 
     <section class="section-max section-pad scroll-mt-24 py-16 sm:py-20">
       <div class="flex items-end justify-between gap-4">

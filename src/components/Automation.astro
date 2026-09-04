@@ -1,0 +1,45 @@
+---
+import { site } from "../content/site";
+---
+
+<section id="automation" class="section-max section-pad scroll-mt-24 py-14 sm:py-16">
+  <div class="max-w-3xl">
+    <h2 class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      {site.automation.title}
+    </h2>
+    <p class="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
+      {site.automation.body}
+    </p>
+  </div>
+
+  <ol
+    class="mt-10 flex flex-wrap items-center gap-2 sm:gap-3"
+    aria-label="Automation sequence"
+  >
+    {
+      site.automation.sequence.map((step, index) => (
+        <li class="flex items-center gap-2 sm:gap-3">
+          <span class="rounded-full border border-teal/30 bg-teal/[0.06] px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-teal">
+            {step}
+          </span>
+          {index < site.automation.sequence.length - 1 && (
+            <span class="text-ink-muted" aria-hidden="true">
+              →
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+
+  <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+    {
+      site.automation.highlights.map((item) => (
+        <li class="flex gap-2 text-sm leading-relaxed text-ink-muted sm:text-base">
+          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

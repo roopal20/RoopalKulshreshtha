@@ -1,0 +1,44 @@
+---
+import { site } from "../content/site";
+---
+
+<section id="agentic" class="section-max section-pad scroll-mt-24 py-16 sm:py-20">
+  <div class="max-w-3xl">
+    <h2 class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      {site.agentic.title}
+    </h2>
+    <p class="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
+      {site.agentic.body}
+    </p>
+  </div>
+
+  <ol class="mt-10 flex flex-wrap items-center gap-2 sm:gap-3" aria-label="Agentic workflow">
+    {
+      site.agentic.steps.map((step, index) => (
+        <li class="flex items-center gap-2 sm:gap-3">
+          <span class="rounded-full border border-line bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink">
+            {step}
+          </span>
+          {index < site.agentic.steps.length - 1 && (
+            <span class="text-gold" aria-hidden="true">
+              →
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+
+  <p class="mt-8 text-sm leading-relaxed text-ink-muted">
+    {
+      site.agentic.technologies.map((tech, index) => (
+        <span>
+          {tech}
+          {index < site.agentic.technologies.length - 1 && (
+            <span class="mx-2 text-line">·</span>
+          )}
+        </span>
+      ))
+    }
+  </p>
+</section>

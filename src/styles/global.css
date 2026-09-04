@@ -11,6 +11,7 @@
   --color-teal: #0b5f5c;
   --color-teal-deep: #083f3d;
   --color-coral: #d76a4e;
+  --color-gold: #9a7b4f;
   --color-line: #c5d2cd;
 }
 
@@ -62,6 +63,10 @@
   .reveal-delay-3 {
     animation-delay: 0.24s;
   }
+
+  .node-pulse {
+    animation: node-pulse 2.8s ease-in-out infinite;
+  }
 }
 
 @keyframes rise {
@@ -75,6 +80,16 @@
   }
 }
 
+@keyframes node-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-teal) 35%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -83,7 +98,8 @@
   .reveal,
   .reveal-delay-1,
   .reveal-delay-2,
-  .reveal-delay-3 {
+  .reveal-delay-3,
+  .node-pulse {
     animation: none;
   }
 }

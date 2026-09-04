@@ -10,9 +10,28 @@ import { site } from "../content/site";
     <div class="mt-6 space-y-4 text-base leading-relaxed text-ink-muted sm:text-lg">
       {site.about.body.map((paragraph) => <p>{paragraph}</p>)}
     </div>
+
+    <ol
+      class="mt-10 flex flex-wrap items-center gap-2 sm:gap-3"
+      aria-label="Career progression"
+    >
+      {
+        site.about.progression.map((step, index) => (
+          <li class="flex items-center gap-2 sm:gap-3">
+            <span class="text-sm font-medium text-ink">{step}</span>
+            {index < site.about.progression.length - 1 && (
+              <span class="text-gold" aria-hidden="true">
+                ↓
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+
     {
       site.location && (
-        <p class="mt-6 text-sm font-medium text-teal">Based in {site.location}</p>
+        <p class="mt-8 text-sm font-medium text-teal">Based in {site.location}</p>
       )
     }
   </div>

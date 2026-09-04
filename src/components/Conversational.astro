@@ -1,0 +1,27 @@
+---
+import { site } from "../content/site";
+---
+
+<section id="conversational" class="section-max section-pad scroll-mt-24 py-14 sm:py-16">
+  <div class="max-w-3xl border-t border-line pt-12">
+    <h2 class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      {site.conversational.title}
+    </h2>
+    <p class="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
+      {site.conversational.body}
+    </p>
+
+    <ul class="mt-8 flex flex-wrap gap-x-5 gap-y-3">
+      {
+        site.conversational.examples.map((example) => (
+          <li class="text-sm font-medium text-ink">
+            <span class="mr-2 text-gold" aria-hidden="true">
+              —
+            </span>
+            {example}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

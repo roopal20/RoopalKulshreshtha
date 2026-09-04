@@ -1,0 +1,18 @@
+---
+import { site } from "../content/site";
+---
+
+<section class="section-max section-pad pb-6 sm:pb-8" aria-label="Credibility">
+  <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-line/80 py-5 text-sm text-ink-muted sm:gap-x-7">
+    {
+      site.credibility.map((item, index) => (
+        <li class="flex items-center gap-5 sm:gap-7">
+          {index > 0 && (
+            <span class="hidden h-1 w-1 rounded-full bg-gold/70 sm:inline-block" aria-hidden="true" />
+          )}
+          <span class="font-medium tracking-wide">{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

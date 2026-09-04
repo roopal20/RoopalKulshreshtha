@@ -26,7 +26,7 @@ function href(path: string) {
         site.nav.map((item) => (
           <a
             href={href(item.href)}
-            class="transition hover:text-teal"
+            class="relative transition hover:text-teal after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-teal after:transition-all hover:after:w-full"
           >
             {item.label}
           </a>
@@ -34,11 +34,19 @@ function href(path: string) {
       }
     </nav>
 
-    <a
-      href={href(site.hero.ctaSecondaryHref)}
-      class="rounded-full bg-teal px-3.5 py-1.5 text-sm font-semibold text-white transition hover:bg-teal-deep"
-    >
-      Résumé
-    </a>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a
+        href={href(site.hero.ctaSecondaryHref)}
+        class="hidden rounded-full border border-line bg-white/50 px-3 py-1.5 text-sm font-semibold text-ink transition hover:border-teal hover:text-teal sm:inline-flex"
+      >
+        Résumé
+      </a>
+      <a
+        href={href(site.navCta.href)}
+        class="rounded-full bg-teal px-3.5 py-1.5 text-sm font-semibold text-white transition hover:bg-teal-deep hover:-translate-y-px"
+      >
+        {site.navCta.label}
+      </a>
+    </div>
   </div>
 </header>

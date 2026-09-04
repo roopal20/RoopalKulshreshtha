@@ -10,9 +10,14 @@ import { site } from "../content/site";
     <p class="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
       {site.contact.body}
     </p>
+    {
+      site.contact.note && (
+        <p class="mt-4 text-sm text-ink-muted">{site.contact.note}</p>
+      )
+    }
     <a
       href={`mailto:${site.email}`}
-      class="mt-8 inline-flex items-center rounded-full bg-coral px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-95"
+      class="mt-8 inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition hover:-translate-y-px hover:bg-teal-deep"
     >
       {site.contact.cta}
     </a>
